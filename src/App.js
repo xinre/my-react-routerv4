@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Route, Link } from "react-router-dom";
+// import { Route, Link } from "react-router-dom";
+import {Link,Route} from './react-routerv4'
 
 const Home = () => (
   <h2>Home</h2>
@@ -40,18 +41,20 @@ const Topics = ({ match }) => {
     </div>
   )
 }
-const App = () => (
-  <div>
-    <ul>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/about">About</Link></li>
-      <li><Link to="/topics">Topics</Link></li>
-    </ul>
-    <hr />
-    <Route exact path="/" component={Home} />
-    <Route path="/about" component={About} />
-    <Route path="/topics" component={Topics} />
-  </div>
-)
+const App = () => {
+  return(
+    <div>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/topics">Topics</Link></li>
+      </ul>
+      <hr />
+      <Route exact path="/" component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/topics" component={Topics} />
+    </div>
+  )
+}
 
 export default App;
