@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { Route, Link } from "react-router-dom";
-import {Link,Route} from './react-routerv4'
+import { Link, Route, Redirect } from './react-routerv4'
 
 const Home = () => (
   <h2>Home</h2>
@@ -42,7 +42,7 @@ const Topics = ({ match }) => {
   )
 }
 const App = () => {
-  return(
+  return (
     <div>
       <ul>
         <li><Link to="/">Home</Link></li>
@@ -53,6 +53,7 @@ const App = () => {
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/topics" component={Topics} />
+      <Redirect to="/" />
     </div>
   )
 }

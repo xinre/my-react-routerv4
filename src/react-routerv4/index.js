@@ -4,7 +4,7 @@ import PropTypes from 'proptype';
 const w = window;
 let instances = []
 const register = (comp) => instances.push(comp)
-const unregister = (comp) =>      instances.splice(instances.indexOf(comp), 1)
+const unregister = (comp) => instances.splice(instances.indexOf(comp), 1)
 const historyPush = (path) => {
   w.history.pushState({}, null, path)
   instances.forEach(instance => instance.forceUpdate())
@@ -36,12 +36,6 @@ const matchPath = (pathname, options) => {
   }
 }
 export class Route extends Component {
-//   static propTypes = {
-//     path: PropTypes.string,
-//     exact: PropTypes.bool,
-//     component: PropTypes.func,
-//     render: PropTypes.func,
-//   }
   componentWillMount() {
     w.addEventListener("popstate", this.handlePop)
     register(this)
@@ -71,17 +65,13 @@ export class Route extends Component {
   }
 }
 export class Link extends Component {
-//   static propTypes = {
-//     to: PropTypes.string,
-//     replace: PropTypes.bool,
-//   }
   handleClick = (event) => {
     const { replace, to } = this.props
     event.preventDefault()
     replace ? historyReplace(to) : historyPush(to)
   }
   render() {
-    const { to, children} = this.props
+    const { to, children } = this.props
     return (
       <a href={to} onClick={this.handleClick}>
         {children}
@@ -90,18 +80,14 @@ export class Link extends Component {
   }
 }
 export class Redirect extends Component {
-    static defaultProps = {
-      push: false
-    }
-    static propTypes = {
-      to: PropTypes.string,
-      push: PropTypes.bool,
-    }
-    componentDidMount() {
-      const { to, push } = this.props
-      push ? historyPush(to) : historyReplace(to)
-    }
-    render() {
-      return null
-    }
+  static defaultProps = {
+    push: false
   }
+  componentDidMount() {
+    const { to, push } = this.props
+    push ? historyPush(to) : historyReplace(to)
+  }
+  render() {
+    return null
+  }
+}
